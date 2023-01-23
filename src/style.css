@@ -56,13 +56,12 @@ body {
 }
 
 .team-logo {
-  width: 60px;
+  height: 80px;
 }
 
 .game-info {
   padding-left: 1em;
   padding-right: 1em;
-  width: 6em;
   display: flex;
   flex-direction: column;
   justify-content: center;
