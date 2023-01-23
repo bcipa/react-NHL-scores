@@ -92,3 +92,13 @@ body {
   background-color: rgb(119, 146, 148);
   border: 1.5px solid rgb(199, 202, 196);
 }
+
+.team-score-goals {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nhl-information {
+  max-width: 600px;
+  min-width: 450px;
+}

@@ -48,7 +48,7 @@ export default class TeamSelector extends Component {
 
   render() {
     return (
-      <div>
+      <div className="nhl-information">
         <Game
           selectedTeamId={this.state.selectedTeamId}
           selected={this.state.selected}

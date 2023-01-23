@@ -16,9 +16,9 @@ function TeamInfo(props) {
   const isOpponent = props.isOpponent;
   return (
     <div className="team-score">
-      {isOpponent ? <h1>{props.score}</h1> : null}
+      {isOpponent ? <h1 className="team-score-goals">{props.score}</h1> : null}
       <Team name={props.name} />
-      {!isOpponent ? <h1>{props.score}</h1> : null}
+      {!isOpponent ? <h1 className="team-score-goals">{props.score}</h1> : null}
     </div>
   );
 }
