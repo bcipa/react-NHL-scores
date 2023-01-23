@@ -50,7 +50,7 @@ export default class Game extends Component {
   importTeamData(data) {
     const gameInformation =
       data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0];
-
+    console.log(gameInformation);
     const awayTeam = gameInformation['teams']['away'];
     const homeTeam = gameInformation['teams']['home'];
     let selectedTeam = null;
