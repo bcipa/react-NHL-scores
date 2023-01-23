@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import Team from './Team';
-//{`/assets/imgs/logos/${props.name.toLowerCase()}.png`}
 function Team(props) {
   return (
     <div className="team-info">
@@ -10,6 +8,26 @@ function Team(props) {
         src={`/assets/imgs/logos/${props.name.toLowerCase()}.svg`}
       />
       <span>{props.name}</span>
+    </div>
+  );
+}
+
+function TeamInfo(props) {
+  const isOpponent = props.isOpponent;
+  return (
+    <div className="team-score">
+      {isOpponent ? <h1>1</h1> : null}
+      <Team name={props.name} />
+      {!isOpponent ? <h1>3</h1> : null}
+    </div>
+  );
+}
+
+function GameInfo(props) {
+  return (
+    <div className="game-info">
+      <p className="game-info-detail">PPG Paints Arena</p>
+      <p className="game-info-detail">January 2, 2023</p>
     </div>
   );
 }
@@ -24,20 +42,11 @@ export default class Game extends Component {
   render() {
     return (
       <div className="game-container">
-        <div className="team-score">
-          <Team name="Penguins" />
-          <h1>3</h1>
-        </div>
+        <TeamInfo name="Penguins" />
 
-        <div className="game-info">
-          <p className="game-info-detail">PPG Paints Arena</p>
-          <p className="game-info-detail">January 2, 2023</p>
-        </div>
+        <GameInfo />
 
-        <div className="team-score">
-          <h1>1</h1>
-          <Team name="Penguins" />
-        </div>
+        <TeamInfo name="Penguins" isOpponent={true} />
       </div>
     );
   }
