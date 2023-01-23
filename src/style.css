@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #e7e9eb;
+  background-color: #b7bcc0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,21 +27,49 @@ body {
   background-color: rgb(36, 34, 34);
   border: 1px solid rgb(138, 138, 138);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  display: inline-flex;
+  display: flex;
+  width: 90%;
   margin: 1em 1em 1em 1em;
-  padding: 0.5em;
   text-align: center;
   border-radius: 5px;
 }
 
 .team-container {
+  align-items: center;
+  display: inline-flex;
+}
+
+.team-info {
   display: flex;
   flex-direction: column;
   place-items: center;
   justify-content: center;
+  margin: 1em;
+  width: min-content;
+}
+
+.team-score {
+  display: flex;
+  place-items: center;
+  width: min-content;
+  margin-right: 1em;
+  margin-left: 1em;
 }
 
 .team-logo {
-  width: 25%;
-  height: auto;
+  width: 100%;
+}
+
+.game-info {
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-info-detail {
+  font-size: 0.7em;
+  margin: 0;
 }
