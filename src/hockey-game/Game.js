@@ -47,45 +47,46 @@ export default class Game extends Component {
     };
   }
 
-  importGameData(data) {
-    const awayTeam = data['teams']['away'];
-    const homeTeam = data['teams']['home'];
+  importTeamData(data) {
+    const gameInformation =
+      data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0];
+
+    const awayTeam = gameInformation['teams']['away'];
+    const homeTeam = gameInformation['teams']['home'];
     let selectedTeam = null;
     let opponent = null;
 
-    if (this.state.selectedTeamId == awayTeam['team']['id']) {
-      selectedTeam = awayTeam;
-      opponent = homeTeam;
-    } else {
+    if (
+      this.state.selectedTeamId ==
+      gameInformation['teams']['home']['team']['id']
+    ) {
       selectedTeam = homeTeam;
       opponent = awayTeam;
+    } else {
+      selectedTeam = awayTeam;
+      opponent = homeTeam;
     }
 
-    let opponentName = opponent['team']['name'].split(' ');
-    let opponentScore = opponent['teamStats']['teamSkaterStats']['goals'];
-    let selectedTeamName = selectedTeam['team']['name'].split(' ');
-    let selectedTeamScore =
-      selectedTeam['teamStats']['teamSkaterStats']['goals'];
+    let gamePath = gameInformation['content']['link'];
+    gamePath = gamePath.replace('/content', '');
+
+    console.log(selectedTeam);
+    const selectedTeamScore = selectedTeam['score'];
+    const selectedTeamName = selectedTeam['team']['name'].split(' ');
+    const opponentTeamScore = opponent['score'];
+    const opponentTeamName = opponent['team']['name'].split(' ');
+
+    const arena = gameInformation['venue']['name'];
+    const gameDate = new Date(gameInformation['gameDate']).toLocaleDateString();
 
     this.setState({
-      opponent: opponentName[opponentName.length - 1],
-      opponentScore: opponentScore,
+      arena: arena,
+      date: gameDate,
+      opponent: opponentTeamName[opponentTeamName.length - 1],
+      opponentScore: opponentTeamScore,
       selectedTeamName: selectedTeamName[selectedTeamName.length - 1],
       selectedTeamScore: selectedTeamScore,
     });
-  }
-
-  importTeamData(data) {
-    console.log(data);
-    var gamePath =
-      data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0][
-        'content'
-      ]['link'];
-    gamePath = gamePath.replace('/content', '');
-
-    fetch('https://statsapi.web.nhl.com' + gamePath + '/boxscore')
-      .then((response) => response.json())
-      .then((data) => this.importGameData(data));
   }
 
   componentDidMount() {
