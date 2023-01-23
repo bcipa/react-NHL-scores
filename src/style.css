@@ -28,7 +28,6 @@ body {
   border: 1px solid rgb(138, 138, 138);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
-  width: 90%;
   margin: 1em 1em 1em 1em;
   text-align: center;
   border-radius: 5px;
@@ -51,9 +50,9 @@ body {
 .team-score {
   display: flex;
   place-items: center;
-  width: min-content;
   margin-right: 1em;
   margin-left: 1em;
+  width: 33%;
 }
 
 .team-logo {
@@ -67,6 +66,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 33%;
 }
 
 .game-info-detail {
