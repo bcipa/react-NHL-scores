@@ -1,12 +1,12 @@
 import React from 'react';
 import './style.css';
 
-import Game from './components/Game';
+import TeamSelector from './components/TeamSelector';
 
 export default function App() {
   return (
     <div>
-      <Game />
+      <TeamSelector />
     </div>
   );
 }
