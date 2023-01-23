@@ -35,8 +35,14 @@ function GameInfo(props) {
 export default class Game extends Component {
   constructor(props) {
     super(props);
+  }
 
-    // GET https://statsapi.web.nhl.com/api/v1/schedule?teamId=30&startDate=2018-01-02&endDate=2018-01-02
+  componentDidMount() {
+    fetch(
+      'https://statsapi.web.nhl.com/api/v1/teams/5?expand=team.schedule.previous[3]'
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
 
   render() {
