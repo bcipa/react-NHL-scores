@@ -16,6 +16,7 @@ function TeamButtons(props) {
                 : 'team-button'
             }
             onClick={() => props.setClickedId(team[1])}
+            key={team[1]}
           >
             {team[0]}
           </button>
@@ -52,7 +53,6 @@ export default class TeamSelector extends Component {
         <TeamButtons
           selectedTeamId={this.state.selectedTeamId}
           setClickedId={this.setSelectedTeam}
-          key={this.state.selectedTeamId}
         />
       </div>
     );
