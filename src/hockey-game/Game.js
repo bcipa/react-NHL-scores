@@ -70,7 +70,6 @@ export default class Game extends Component {
     let gamePath = gameInformation['content']['link'];
     gamePath = gamePath.replace('/content', '');
 
-    console.log(selectedTeam);
     const selectedTeamScore = selectedTeam['score'];
     const selectedTeamName = selectedTeam['team']['name'].split(' ');
     const opponentTeamScore = opponent['score'];
