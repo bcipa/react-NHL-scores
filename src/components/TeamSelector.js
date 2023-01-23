@@ -42,6 +42,10 @@ export default class TeamSelector extends Component {
     });
   };
 
+  componentDidMount() {
+    this.setSelectedTeam(5);
+  }
+
   render() {
     return (
       <div>
