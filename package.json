@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-spinners": "^0.13.8"
   },
   "scripts": {
     "start": "react-scripts start",

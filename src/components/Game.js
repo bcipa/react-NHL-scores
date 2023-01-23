@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import MoonLoader from 'react-spinners/MoonLoader';
+
 function Team(props) {
   return (
     <div className="team-info">
@@ -37,16 +39,18 @@ export default class Game extends Component {
     super(props);
 
     this.state = {
-      selectedTeamName: 'Penguins',
+      selectedTeamName: '',
       selectedTeamScore: 0,
-      opponent: 'Penguins',
+      opponent: '',
       opponentScore: 0,
       arena: '',
       date: '',
+      loading: true,
     };
   }
 
   importTeamData(data) {
+    this.setState({ loading: true });
     const gameInformation =
       data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0];
 
@@ -85,6 +89,8 @@ export default class Game extends Component {
       selectedTeamName: selectedTeamName[selectedTeamName.length - 1],
       selectedTeamScore: selectedTeamScore,
     });
+
+    this.setState({ loading: false });
   }
 
   componentDidUpdate() {
@@ -98,18 +104,20 @@ export default class Game extends Component {
   render() {
     return (
       <div className="game-container">
-        <TeamInfo
-          name={this.state.selectedTeamName}
-          score={this.state.selectedTeamScore}
-        />
+        <div className="game-container-loaded">
+          <TeamInfo
+            name={this.state.selectedTeamName}
+            score={this.state.selectedTeamScore}
+          />
 
-        <GameInfo arena={this.state.arena} date={this.state.date} />
+          <GameInfo arena={this.state.arena} date={this.state.date} />
 
-        <TeamInfo
-          name={this.state.opponent}
-          score={this.state.opponentScore}
-          isOpponent={true}
-        />
+          <TeamInfo
+            name={this.state.opponent}
+            score={this.state.opponentScore}
+            isOpponent={true}
+          />
+        </div>
       </div>
     );
   }

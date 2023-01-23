@@ -33,6 +33,10 @@ body {
   border-radius: 5px;
 }
 
+.game-container-loaded {
+  display: contents;
+}
+
 .team-container {
   align-items: center;
   display: inline-flex;
@@ -100,4 +104,8 @@ body {
 .nhl-information {
   max-width: 600px;
   min-width: 450px;
+}
+
+.loader {
+  display: none;
 }
