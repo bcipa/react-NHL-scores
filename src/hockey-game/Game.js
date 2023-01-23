@@ -37,12 +37,27 @@ export default class Game extends Component {
     super(props);
   }
 
+  importGameData(data) {
+    console.log(data);
+  }
+
+  importTeamData(data) {
+    const game_path =
+      data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0][
+        'content'
+      ]['link'];
+
+    fetch('https://statsapi.web.nhl.com' + game_path)
+      .then((response) => response.json())
+      .then((data) => this.importGameData(data));
+  }
+
   componentDidMount() {
     fetch(
-      'https://statsapi.web.nhl.com/api/v1/teams/5?expand=team.schedule.previous[3]'
+      'https://statsapi.web.nhl.com/api/v1/teams/5?expand=team.schedule.previous'
     )
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => this.importTeamData(data));
   }
 
   render() {

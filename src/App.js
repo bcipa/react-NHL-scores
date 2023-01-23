@@ -7,8 +7,6 @@ export default function App() {
   return (
     <div>
       <Game />
-      <Game />
-      <Game />
     </div>
   );
 }
