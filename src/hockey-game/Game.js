@@ -1,27 +1,6 @@
 import React, { Component } from 'react';
 
-function Team(props) {
-  return (
-    <div className="team-info">
-      <img
-        className="team-logo"
-        src={`/assets/imgs/logos/${props.name.toLowerCase()}.svg`}
-      />
-      <span>{props.name}</span>
-    </div>
-  );
-}
-
-function TeamInfo(props) {
-  const isOpponent = props.isOpponent;
-  return (
-    <div className="team-score">
-      {isOpponent ? <h1>1</h1> : null}
-      <Team name={props.name} />
-      {!isOpponent ? <h1>3</h1> : null}
-    </div>
-  );
-}
+import TeamInfo from './TeamInfo';
 
 function GameInfo(props) {
   return (
@@ -42,12 +21,13 @@ export default class Game extends Component {
   }
 
   importTeamData(data) {
-    const game_path =
+    var gamePath =
       data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0][
         'content'
       ]['link'];
+    gamePath = gamePath.replace('/content', '');
 
-    fetch('https://statsapi.web.nhl.com' + game_path)
+    fetch('https://statsapi.web.nhl.com' + gamePath + '/boxscore')
       .then((response) => response.json())
       .then((data) => this.importGameData(data));
   }
