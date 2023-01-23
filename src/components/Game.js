@@ -38,7 +38,6 @@ export default class Game extends Component {
 
     this.state = {
       selectedTeamName: 'Penguins',
-      selectedTeamId: 5,
       selectedTeamScore: 0,
       opponent: 'Penguins',
       opponentScore: 0,
@@ -57,7 +56,7 @@ export default class Game extends Component {
     let opponent = null;
 
     if (
-      this.state.selectedTeamId ==
+      this.props.selectedTeamId ==
       gameInformation['teams']['home']['team']['id']
     ) {
       selectedTeam = homeTeam;
@@ -88,9 +87,9 @@ export default class Game extends Component {
     });
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     fetch(
-      'https://statsapi.web.nhl.com/api/v1/teams/5?expand=team.schedule.previous'
+      `https://statsapi.web.nhl.com/api/v1/teams/${this.props.selectedTeamId}?expand=team.schedule.previous`
     )
       .then((response) => response.json())
       .then((data) => this.importTeamData(data));
