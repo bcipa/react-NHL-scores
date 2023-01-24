@@ -1,3 +1,3 @@
-# react-NHL-scores
+# React NHL Most Recent Score
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-gaa2tv)
+[Test me here!](stackblitz.com/edit/react-gaa2tv)
